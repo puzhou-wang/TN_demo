@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta charset="utf-8">
+<!--<link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-1.1.0.min.css"
+
+    rel="stylesheet" type="text/css">
+<link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.5.min.css"
+    rel="stylesheet" type="text/css">-->
+
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.0.1.min.js"
+		crossorigin="anonymous"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.0.1.min.js"
+		crossorigin="anonymous"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.0.1.min.js"
+		crossorigin="anonymous"></script>
+</head>
+<body>
+<H1>Subbasin Plotting</H1>
+
+<form action="/">
+<select name="category">
+	{% for category in list_cat %}
+		{% if category == selected_category %}
+			<option selected value="{{ category }}">{{ category }}</option>
+		{% else %}
+			<option value="{{ category }}">{{ category }}</option>
+		{% endif %}
+	{% endfor %}
+</select>
+<select name="year">
+	{% for year in list_year %}
+		{% if year == selected_year %}
+			<option selected value="{{ year }}">{{ year }}</option>
+		{% else %}
+			<option value="{{ year }}">{{ year }}</option>
+		{% endif %}
+	{% endfor %}
+</select>
+<select name="month">
+	{% for month in list_month %}
+		{% if month == selected_month %}
+			<option selected value="{{ month }}">{{ month }}</option>
+		{% else %}
+			<option value="{{ month }}">{{ month }}</option>
+		{% endif %}
+	{% endfor %}
+</select>
+<input type="submit">
+</form>
+
+{{ script|safe }}
+{{ div|safe }}
+
+</body>
+</html>
