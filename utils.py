@@ -1,7 +1,3 @@
-import geopandas as gpd
-import pysal as ps
-
-
 def getPolyCoords(row, geom, coord_type):
     """Returns the coordinates ('x' or 'y') of edges of a Polygon exterior"""
 
