@@ -5,7 +5,7 @@
 1. clone the repo
 
 ```
-git clone git@github.com:puzhou-wang/TN_demo.git
+git clone https://github.com/puzhou-wang/TN_demo.git
 ```
 
 2. install the required libraries
