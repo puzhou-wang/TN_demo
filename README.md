@@ -14,6 +14,8 @@ git clone git@github.com:puzhou-wang/TN_demo.git
 pip install -r requirements.txt
 ```
 
+3. make sure to restart the terminal before run flask
+
 ## Run the demo
 
 1. run flask app:
