@@ -3,7 +3,7 @@ import pandas as pd
 import geopandas as gpd
 import sqlite3 as lite
 from bokeh.plotting import figure
-from bokeh.models import ColumnDataSource, HoverTool, LinearColorMapper, ColorBar, SingleIntervalTicker, PrintfTickFormatter
+from bokeh.models import ColumnDataSource, LinearColorMapper, ColorBar, SingleIntervalTicker, HoverTool
 from bokeh.embed import components
 import math
 import calendar
@@ -70,16 +70,23 @@ def create_figure(selected_category, selected_year, selected_month):
     low = float(math.floor(data['TN'].min()/100) * 100)
     high = float(math.ceil(data['TN'].max()/100) * 100)
     color_mapper = LinearColorMapper(palette='RdYlGn10', low=low, high=high)
-
+    hover = HoverTool(
+        tooltips=[
+            ("Subbasin", "$index"),
+            ("TN", "@TN{int}"),
+        ],
+        names=['grid']
+    )
     p = figure(title="{0} map for {1}-{2}".format(selected_category, calendar.month_name[int(selected_month)], selected_year),
                plot_width=800, match_aspect=True)
+    p.add_tools(hover)
     gsource = ColumnDataSource(plot_df)
     monitor_source = ColumnDataSource(monitor_df)
     river_source = ColumnDataSource(river_df)
     # Plot grid
     p.patches('x', 'y', source=gsource,
               fill_color={'field': 'TN', 'transform': color_mapper},
-              fill_alpha=1.0, line_color="black", line_width=0.05)
+              fill_alpha=1.0, line_color="black", line_width=0.05, name='grid')
     p.multi_line('x', 'y', source=river_source, color="blue", line_width=1, legend_label='river')
     p.circle('x', 'y', size=5, source=monitor_source, color="red", legend_label='monitor location')
     p.axis.visible = False

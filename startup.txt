@@ -1,1 +1,1 @@
-gunicorn --bind=0.0.0.0 --timeout 600 TN_demo:TN_demo
+gunicorn --bind=0.0.0.0 --timeout 600 TN_demo:app
