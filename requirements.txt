@@ -7,7 +7,7 @@ Fiona==1.8.13.post1
 Flask==1.1.2
 geopandas==0.7.0
 itsdangerous==1.1.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 munch==2.5.0
 numpy==1.18.4
